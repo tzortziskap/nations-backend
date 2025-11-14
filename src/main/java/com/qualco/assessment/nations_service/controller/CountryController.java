@@ -2,7 +2,7 @@ package com.qualco.assessment.nations_service.controller;
 
 import com.qualco.assessment.nations_service.entity.dto.CountryDTO;
 import com.qualco.assessment.nations_service.service.CountryService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/country")
+@AllArgsConstructor
 public class CountryController {
 
-    @Autowired
     private CountryService countryService;
 
     @GetMapping

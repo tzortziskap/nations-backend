@@ -4,9 +4,7 @@ import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -24,10 +22,6 @@ public class Language {
 
     @Column(name = "language", nullable = false, length = 50)
     private String language;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "language")
-    @ToString.Exclude
-    private Set<CountryLanguage> countryLanguages = new LinkedHashSet<>();
 
     @Override
     public final boolean equals(Object o) {

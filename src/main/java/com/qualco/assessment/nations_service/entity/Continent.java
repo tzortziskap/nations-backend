@@ -25,10 +25,6 @@ public class Continent {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "continent")
-    @ToString.Exclude
-    private Set<Region> regions = new LinkedHashSet<>();
-
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;

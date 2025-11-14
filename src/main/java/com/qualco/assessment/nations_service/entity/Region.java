@@ -30,10 +30,6 @@ public class Region {
     @ToString.Exclude
     private Continent continent;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "region")
-    @ToString.Exclude
-    private Set<Country> countries = new LinkedHashSet<>();
-
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;

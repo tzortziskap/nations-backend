@@ -2,7 +2,7 @@ package com.qualco.assessment.nations_service.controller;
 
 import com.qualco.assessment.nations_service.exception.CountryNotFoundException;
 import com.qualco.assessment.nations_service.service.LanguageService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +14,10 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/language")
+@AllArgsConstructor
 public class LanguageController {
 
-    @Autowired
     private LanguageService languageService;
-
 
     @GetMapping("/country/{countryId}")
     public ResponseEntity<?> getLanguagesByCounty(@PathVariable int countryId) {
