@@ -1,6 +1,7 @@
 package com.qualco.assessment.nations_service.controller;
 
 import com.qualco.assessment.nations_service.entity.dto.CountryStatsDTO;
+import com.qualco.assessment.nations_service.enums.SortFieldEnum;
 import com.qualco.assessment.nations_service.service.CountryStatsService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -23,6 +24,7 @@ public class CountryStatsController {
                                                  @RequestParam(defaultValue = "10") int size,
                                                  @RequestParam(defaultValue = "year") String sorting,
                                                  @RequestParam(defaultValue = "asc") String order) {
-        return countryStatsService.findAll(PageRequest.of(page, size, order.equals("desc") ? Sort.by(sorting).descending() : Sort.by(sorting).ascending()));
+        sorting = SortFieldEnum.getDaoPath(CountryStatsDTO.class, sorting);
+        return countryStatsService.findMaxGdpPerPopulationPerCountry(PageRequest.of(page, size, order.equals("desc") ? Sort.by(sorting).descending() : Sort.by(sorting).ascending()));
     }
 }

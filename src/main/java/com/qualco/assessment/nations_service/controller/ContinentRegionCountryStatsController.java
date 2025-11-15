@@ -1,6 +1,7 @@
 package com.qualco.assessment.nations_service.controller;
 
 import com.qualco.assessment.nations_service.entity.dto.ContinentRegionCountryStatsDTO;
+import com.qualco.assessment.nations_service.enums.SortFieldEnum;
 import com.qualco.assessment.nations_service.service.CountryStatsService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,7 @@ public class ContinentRegionCountryStatsController {
             @RequestParam(required = false) Integer fromYear,
             @RequestParam(required = false) Integer toYear
     ) {
+        sorting = SortFieldEnum.getDaoPath(ContinentRegionCountryStatsDTO.class, sorting);
         Sort sort = order.equalsIgnoreCase("desc") ?
                 Sort.by(sorting).descending() :
                 Sort.by(sorting).ascending();
