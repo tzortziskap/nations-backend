@@ -18,8 +18,8 @@ public class CountryStatsServiceImpl implements CountryStatsService {
     private CountryStatsMapper countryStatsMapper;
 
     @Override
-    public Page<CountryStatsDTO> findAll(Pageable pageable) {
-        return countryStatsRepository.findAll(pageable).map(countryStatsMapper::countryToCountryDTO);
+    public Page<CountryStatsDTO> findMaxGdpPerPopulationPerCountry(Pageable pageable) {
+        return countryStatsRepository.findMaxGdpPerPopulationPerCountry(pageable).map(countryStatsMapper::countryToCountryDTO);
     }
 
     @Override

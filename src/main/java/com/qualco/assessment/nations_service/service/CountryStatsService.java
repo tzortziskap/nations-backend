@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface CountryStatsService {
 
-    Page<CountryStatsDTO> findAll(Pageable pageable);
+    Page<CountryStatsDTO> findMaxGdpPerPopulationPerCountry(Pageable pageable);
 
     Page<ContinentRegionCountryStatsDTO> getContinentRegionCountryStats(String region, Integer fromYear, Integer toYear, Pageable pageable);
 }

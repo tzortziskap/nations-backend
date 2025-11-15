@@ -12,7 +12,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CountryStatsRepository extends CrudRepository<CountryStat, Integer> {
 
-    Page<CountryStat> findAll(Pageable pageable);
+    @Query("SELECT cs " +
+            "FROM CountryStat cs " +
+            "WHERE cs.population > 0 " +
+            "AND NOT EXISTS ( " +
+            "SELECT 1 " +
+            "FROM CountryStat cs2 " +
+            "WHERE cs2.country = cs.country " +
+            "AND cs2.population > 0 " +
+            "AND cs2.gdp / cs2.population > cs.gdp / cs.population)")
+    Page<CountryStat> findMaxGdpPerPopulationPerCountry(Pageable pageable);
+
 
     @Query("SELECT new com.qualco.assessment.nations_service.entity.dto.ContinentRegionCountryStatsDTO(cs.year, cs.population, cs.gdp, c.name, r.name, cont.name) " +
             "FROM CountryStat cs " +
