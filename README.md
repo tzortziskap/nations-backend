@@ -6,10 +6,10 @@ Apache Maven 3.9.11
 Java version: 1.8.0_472
 
 Build the application with 
-mvn clean install -DDB_USERNAME=\${DB_USERNAME}-DDB_PASSWORD=\${DB_PASSWORD} -DDB_URL=${DB_URL}
+mvn clean package -DDB_USERNAME=\${DB_USERNAME}-DDB_PASSWORD=\${DB_PASSWORD} -DDB_URL=${DB_URL}
 
 Start the service
-java -DDB_USERNAME=\${DB_USERNAME} -DDB_PASSWORD=\${DB_PASSWORD} -DDB_URL=${DB_URL}
+java -DDB_USERNAME=\${DB_USERNAME} -DDB_PASSWORD=\${DB_PASSWORD} -DDB_URL=${DB_URL} -jar ./target/nations-service-0.0.1-SNAPSHOT.jar
 
 ${DB_URL} = The full jdbc url of the nation schema in Maria DB
 
