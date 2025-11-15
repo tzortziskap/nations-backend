@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
-
 @RestController
 @RequestMapping("/api/v1/language")
 @AllArgsConstructor
@@ -22,9 +20,9 @@ public class LanguageController {
     @GetMapping("/country/{countryId}")
     public ResponseEntity<?> getLanguagesByCounty(@PathVariable int countryId) {
         try {
-            return new ResponseEntity<Set<String>>(languageService.getLanguagesByCountry(countryId), HttpStatus.OK);
+            return new ResponseEntity<>(languageService.getLanguagesByCountry(countryId), HttpStatus.OK);
         } catch (CountryNotFoundException e) {
-            return new ResponseEntity<String>(e.getMessage() , HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage() , HttpStatus.BAD_REQUEST);
         }
     }
 }
